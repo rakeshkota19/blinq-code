@@ -3,12 +3,21 @@ import "./SuccessRequestPopup.css";
 
 const SuccessRequestPopUp = (props) => {
   return (
-    <div>
-      <h2> All done! </h2>
+    <div className="SuccessPopup">
+      <div className="header">
+        <p> All done! </p>
+        <p>----------</p>
+      </div>
 
-      <pre> You will one of the first to experience Browell & Co, when we launch</pre>
+      <p> You will one of the first to experience Browell & Co, when we launch</p>
 
-      <button>Ok</button>
+      <button
+        onClick={() => {
+          props.setShowSuccessPopup(false);
+        }}
+      >
+        Ok
+      </button>
     </div>
   );
 };

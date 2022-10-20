@@ -1,2 +1,20 @@
-.SuccessPopUp {
+.SuccessPopup {
+  position: fixed;
+  top: 30%;
+  left: 30%;
+  width: 40%;
+  height: 40%;
+  z-index: 10;
+  border: 2px solid lightslategray;
+}
+
+.SuccessPopup .header {
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.5em;
+  padding: 1em;
+}
+
+button.SuccessPopup {
+  width: 80%;
 }

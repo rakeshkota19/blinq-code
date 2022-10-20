@@ -3,12 +3,21 @@ import "./App.css";
 import Header from "./components/Header/Header";
 import HomePage from "./components/HomePage/HomePage";
 import Footer from "./components/Footer/Footer";
+import { useState } from "react";
 
 function App() {
+  const [showRequestForm, setShowRequestForm] = useState(false);
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+
   return (
-    <div>
+    <div className={`${showRequestForm | showSuccessPopup ? "OverlayEffect" : ""}`}>
       <Header />
-      <HomePage />
+      <HomePage
+        requestForm={setShowRequestForm}
+        showRequestForm={showRequestForm}
+        showSuccessPopup={showSuccessPopup}
+        setShowSuccessPopup={setShowSuccessPopup}
+      />
       <Footer />
     </div>
   );
