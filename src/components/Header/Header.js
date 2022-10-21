@@ -2,7 +2,7 @@ import React from "react";
 import "./Header.css";
 
 const Header = () => {
-  return <div className="Header">BROCCOLI & CO</div>;
+  return <header className="Header">BROCCOLI & CO</header>;
 };
 
 export default Header;

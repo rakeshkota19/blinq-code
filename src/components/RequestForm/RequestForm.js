@@ -1,5 +1,10 @@
 import React, { useState } from "react";
 import { AUTH_URL } from "../../Constants";
+import {
+  buildRequestInvitePostBody,
+  checkEmailRequestForm,
+  validateFullNameRequestForm,
+} from "../../Util";
 import "./RequestForm.css";
 
 const RequestForm = ({ requestForm, setShowSuccessPopup }) => {
@@ -11,13 +16,9 @@ const RequestForm = ({ requestForm, setShowSuccessPopup }) => {
 
   const submitHandler = (e) => {
     let msg = "";
-    if (fullName?.length === 0) {
-      msg = "Full Name can't be empty \n";
-    }
 
-    if (email !== confirmEmail) {
-      msg = msg + "Both are emails are not same, please check";
-    }
+    msg += validateFullNameRequestForm(fullName);
+    msg += checkEmailRequestForm(email, confirmEmail);
 
     if (msg?.length > 0) {
       setErrorMsg(msg);
@@ -25,28 +26,31 @@ const RequestForm = ({ requestForm, setShowSuccessPopup }) => {
       return;
     }
 
-    var data = {
-      email: email,
-      name: fullName,
-    };
+    var data = buildRequestInvitePostBody(fullName, email);
 
     setIsSending(true);
     fetch(AUTH_URL, {
       method: "POST",
       body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
     })
       .then((res) => {
-        console.log(res);
-        requestForm(false);
-        setShowSuccessPopup(true);
+        console.log(res.status);
+
+        if (res.status === 200) {
+          console.log(res);
+          requestForm(false);
+          setShowSuccessPopup(true);
+        } else {
+          console.log(res);
+        }
       })
       .catch((err) => {
         console.log(err);
-        setIsSending(false);
         setErrorMsg(msg);
+      })
+      .finally(() => {
+        setIsSending(false);
       });
 
     e.preventDefault();
@@ -96,7 +100,7 @@ const RequestForm = ({ requestForm, setShowSuccessPopup }) => {
 
         {errorMsg && (
           <div className="errorMsg">
-            <p> {errorMsg} </p>
+            <pre> {errorMsg} </pre>
           </div>
         )}
       </form>

@@ -5,7 +5,7 @@ import "./HomePage.css";
 
 const HomePage = ({ requestForm, showRequestForm, showSuccessPopup, setShowSuccessPopup }) => {
   return (
-    <div className="HomePage">
+    <section className="HomePage">
       <h1>A Better way to enjoy every day</h1>
       <p>Be the first to know when we launch</p>
       <button onClick={() => requestForm(true)}> Request an invite</button>
@@ -13,7 +13,7 @@ const HomePage = ({ requestForm, showRequestForm, showSuccessPopup, setShowSucce
         <RequestForm requestForm={requestForm} setShowSuccessPopup={setShowSuccessPopup} />
       )}
       {showSuccessPopup && <SuccessRequestPopUp setShowSuccessPopup={setShowSuccessPopup} />}
-    </div>
+    </section>
   );
 };
 

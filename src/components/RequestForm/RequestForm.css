@@ -3,8 +3,9 @@
   border: 2px solid lightslategray;
   width: 30%;
   height: 60%;
-  top: 20%;
-  left: 35%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 10;
   background-color: rgba(255, 255, 255, 1);
   background-color: beige;
@@ -29,4 +30,19 @@ input {
 
 .errorMsg {
   color: red;
+}
+
+@media screen and (max-width: 800px) {
+  .RequestCard {
+    position: fixed;
+    border: 2px solid lightslategray;
+    width: 60%;
+    height: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 1);
+    background-color: beige;
+  }
 }

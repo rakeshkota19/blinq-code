@@ -3,10 +3,10 @@ import "./Footer.css";
 
 const Footer = () => {
   return (
-    <div className="Footer">
+    <footer className="Footer">
       <p>Made with ♡ in Melbourne</p>
       <p> Broccoli & Co, All rights reserved </p>
-    </div>
+    </footer>
   );
 };
 
