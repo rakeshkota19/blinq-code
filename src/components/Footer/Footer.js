@@ -4,7 +4,7 @@ import "./Footer.css";
 const Footer = () => {
   return (
     <footer className="Footer" data-testid="footer">
-      <p>Made with ♡ in Melbourne</p>
+      <p>Made with &#10084;&#65039; in Melbourne</p>
       <p> Broccoli & Co, All rights reserved </p>
     </footer>
   );

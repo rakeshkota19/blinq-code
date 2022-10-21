@@ -1,0 +1,16 @@
+.HomePage {
+  text-align: center;
+  width: 100%;
+  height: calc(100vh - 8rem);
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.HomePage > button {
+  width: 12rem;
+  padding: 1em;
+}

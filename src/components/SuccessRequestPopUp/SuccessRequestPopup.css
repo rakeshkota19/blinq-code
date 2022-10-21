@@ -1,20 +1,41 @@
 .SuccessPopup {
   position: fixed;
-  top: 30%;
-  left: 30%;
-  width: 40%;
-  height: 40%;
-  z-index: 10;
   border: 2px solid lightslategray;
+  width: 30%;
+  height: 60%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  padding: 3rem;
+  background-color: white;
 }
 
 .SuccessPopup .header {
   font-style: italic;
   font-weight: 600;
-  font-size: 1.5em;
-  padding: 1em;
+  font-size: 1.5rem;
+  padding: 1rem;
+  font-family: "Times New Roman", Times, serif;
 }
 
-button.SuccessPopup {
-  width: 80%;
+.SuccessPopup .container {
+  line-height: 1.5rem;
+  padding: 1rem;
+}
+
+.SuccessPopup > button {
+  width: 100%;
+  padding: 0.5rem;
+}
+
+@media screen and (max-width: 745px) {
+  .SuccessPopup {
+    width: 80%;
+    height: 70%;
+    z-index: 20;
+    border: 2px solid lightslategray;
+    background-color: white;
+    padding: 1.5rem;
+  }
 }

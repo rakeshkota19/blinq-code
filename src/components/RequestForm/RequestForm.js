@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { AUTH_URL } from "../../Constants";
+import {
+  AUTH_URL,
+  CONFIRM_EMAIL_REQUEST_FORM,
+  EMAIL_INPUT_REQUEST_FORM,
+  NAME_INPUT_REQUEST_FORM,
+  REQUEST_FORM,
+  SUBMIT_REQUEST_FORM,
+} from "../../Constants";
 import {
   buildRequestInvitePostBody,
   checkEmailRequestForm,
@@ -34,20 +41,18 @@ const RequestForm = ({ requestForm, setShowSuccessPopup }) => {
       body: JSON.stringify(data),
       headers: { "Content-Type": "application/json" },
     })
-      .then((res) => {
-        console.log(res.status);
-
+      .then(async (res) => {
         if (res.status === 200) {
-          console.log(res);
           requestForm(false);
           setShowSuccessPopup(true);
         } else {
-          console.log(res);
+          let msg = await res.json();
+          throw msg.errorMessage;
         }
       })
       .catch((err) => {
         console.log(err);
-        setErrorMsg(msg);
+        setErrorMsg(err);
       })
       .finally(() => {
         setIsSending(false);
@@ -57,19 +62,24 @@ const RequestForm = ({ requestForm, setShowSuccessPopup }) => {
   };
 
   return (
-    <div className="RequestCard">
+    <div className={`RequestCard`}>
+      <button className="close-btn" onClick={() => requestForm(false)}>
+        &#10006;
+      </button>
+
       <div className="formHeader">
         <p> Request an invite</p>
         <span> --------- </span>
       </div>
 
-      <form onSubmit={(e) => submitHandler(e)}>
+      <form data-testid={REQUEST_FORM} onSubmit={(e) => submitHandler(e)}>
         <div className="inputContainer">
           <input
             type="text"
             placeholder="Full Name"
             required
             value={fullName}
+            data-testid={NAME_INPUT_REQUEST_FORM}
             onChange={(e) => setFullName(e.target.value)}
           />
 
@@ -78,14 +88,17 @@ const RequestForm = ({ requestForm, setShowSuccessPopup }) => {
             required
             placeholder="Email"
             value={email}
+            data-testid={EMAIL_INPUT_REQUEST_FORM}
             onChange={(e) => setEmail(e.target.value)}
           />
 
           <input
             type="email"
             required
+            // todo  pattern
             placeholder="Confirm Email"
             value={confirmEmail}
+            data-testid={CONFIRM_EMAIL_REQUEST_FORM}
             onChange={(e) => setConfirmMail(e.target.value)}
           />
         </div>
@@ -95,11 +108,13 @@ const RequestForm = ({ requestForm, setShowSuccessPopup }) => {
             Sending, Please Wait
           </button>
         ) : (
-          <button type="submit">Send</button>
+          <button type="submit" data-testid={SUBMIT_REQUEST_FORM}>
+            Send
+          </button>
         )}
 
         {errorMsg && (
-          <div className="errorMsg">
+          <div className="errorMsg error">
             <pre> {errorMsg} </pre>
           </div>
         )}

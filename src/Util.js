@@ -1,7 +1,7 @@
 export const validateFullNameRequestForm = (fullName) => {
   let msg = "";
 
-  if (fullName?.length < 3) {
+  if (!fullName || fullName.length < 3) {
     msg = `Full Name can't be less than 3 characters \n `;
   }
 
