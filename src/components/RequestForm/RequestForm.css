@@ -8,6 +8,7 @@
   transform: translate(-50%, -50%);
   z-index: 10;
   background-color: white;
+  overflow: auto;
 }
 
 .close-btn {
@@ -42,19 +43,6 @@ input {
 .errorMsg pre {
   white-space: pre-line;
 }
-
-/* .error {
-  animation: shake 1s;
-}
-
-@keyframes shake {
-  from {
-    transform: translate(-1px, -1px);
-  }
-  to {
-    transform: translate(0px, 0px);
-  }
-} */
 
 .RequestCard button {
   width: 192px;

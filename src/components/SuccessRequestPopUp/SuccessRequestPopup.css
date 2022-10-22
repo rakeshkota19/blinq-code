@@ -9,6 +9,7 @@
   z-index: 100;
   padding: 3rem;
   background-color: white;
+  overflow: auto;
 }
 
 .SuccessPopup .header {

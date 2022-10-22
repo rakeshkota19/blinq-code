@@ -114,7 +114,7 @@ const RequestForm = ({ requestForm, setShowSuccessPopup }) => {
         )}
 
         {errorMsg && (
-          <div className="errorMsg error">
+          <div className="errorMsg">
             <pre> {errorMsg} </pre>
           </div>
         )}
