@@ -7,7 +7,7 @@ const SuccessRequestPopUp = (props) => {
     <div className="SuccessPopup" data-testid={SUCCESS_POPUP}>
       <div className="header">
         <p> All done! </p>
-        <p>----------</p>
+        <p> --------- </p>
       </div>
 
       <div className="container">
